@@ -129,27 +129,11 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	if ss['community_user']:
-		#st.write('## 1. Optional - enter your OpenAI API key')
-		#t1,t2 = st.tabs(['community version','enter your own API key'])
-		pct = model.community_tokens_available_pct()
-		ss['community_pct'] = pct
-		ss['debug']['community_pct'] = pct
-		#with t1:
-			#pct = model.community_tokens_available_pct()
-			#st.write(f'Community tokens available: :{"green" if pct else "red"}[{int(pct)}%]')
-			#st.progress(pct/100)
-			#st.write('Refresh in: ' + model.community_tokens_refresh_in())
-			#st.write('You can sign up to OpenAI and/or create your API key [here](https://platform.openai.com/account/api-keys)')
-			#ss['community_pct'] = pct
-			#ss['debug']['community_pct'] = pct
-		#with t2:
-			#st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
-	#else:
-		#st.write('## 1. Enter your OpenAI API key')
-		#st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 	
-	
+	pct = model.community_tokens_available_pct()
+	ss['community_pct'] = pct
+	ss['debug']['community_pct'] = pct
+		
 	
 	st.write('## 1. Upload or select your PDF file')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
