@@ -129,12 +129,6 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	
-	pct = model.community_tokens_available_pct()
-	ss['community_pct'] = pct
-	ss['debug']['community_pct'] = pct
-		
-	
 	st.write('## 1. Upload or select your PDF file')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
 	t1,t2 = st.tabs(['UPLOAD','SELECT'])
@@ -338,7 +332,7 @@ def output_add(q,a):
 st.title('Why search, when you can get _:green[answers]_?')
 
 
-#ui_api_key()
+ui_api_key()
 ui_pdf_file()
 ui_question()
 ui_hyde_answer()
