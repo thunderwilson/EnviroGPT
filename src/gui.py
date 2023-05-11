@@ -1,11 +1,11 @@
 __version__ = "0.4.8.3"
-app_name = "Ask my PDF"
+app_name = "EnviroGPT"
 
 
 # BOILERPLATE
 
 import streamlit as st
-st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}')
+st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}', ppage_icon="📚")
 ss = st.session_state
 if 'debug' not in ss: ss['debug'] = {}
 import css
@@ -303,22 +303,24 @@ def output_add(q,a):
 
 # LAYOUT
 
-with st.sidebar:
-	ui_info()
-	ui_spacer(2)
-	with st.expander('advanced'):
-		ui_show_debug()
-		b_clear()
-		ui_model()
-		ui_fragments()
-		ui_fix_text()
-		ui_hyde()
-		ui_hyde_summary()
-		ui_temperature()
-		b_reload()
-		ui_task_template()
-		ui_task()
-		ui_hyde_prompt()
+# with st.sidebar:
+# 	ui_info()
+# 	ui_spacer(2)
+# 	with st.expander('advanced'):
+# 		ui_show_debug()
+# 		b_clear()
+# 		ui_model()
+# 		ui_fragments()
+# 		ui_fix_text()
+# 		ui_hyde()
+# 		ui_hyde_summary()
+# 		ui_temperature()
+# 		b_reload()
+# 		ui_task_template()
+# 		ui_task()
+# 		ui_hyde_prompt()
+
+st.title('Why search, when you can get _italics_ :green[answers] and emojis :sunglasses:')
 
 # ui_api_key()
 ui_pdf_file()
