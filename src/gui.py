@@ -1,11 +1,11 @@
 __version__ = "0.4.8.3"
-app_name = "EnviroGPT"
+app_name = "Ask my PDF"
 
 
 # BOILERPLATE
 
 import streamlit as st
-st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}', page_icon="📚")
+st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}')
 ss = st.session_state
 if 'debug' not in ss: ss['debug'] = {}
 import css
@@ -13,15 +13,6 @@ st.write(f'<style>{css.v1}</style>', unsafe_allow_html=True)
 header1 = st.empty() # for errors / messages
 header2 = st.empty() # for errors / messages
 header3 = st.empty() # for errors / messages
-
-
-hide_menu_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        </style>
-        """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
-
 
 # IMPORTS
 
@@ -85,7 +76,7 @@ def ui_info():
 		on Twitter for news and updates.
 		""")
 	ui_spacer(1)
-	st.markdown('Source code can be found [here](https://github.com/mobarski/EnviroGPT).')
+	st.markdown('Source code can be found [here](https://github.com/mobarski/ask-my-pdf).')
 
 def ui_api_key():
 	if ss['community_user']:
@@ -129,7 +120,7 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	st.write('## 1. Upload or select your PDF file')
+	st.write('## 2. Upload or select your PDF file')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
 	t1,t2 = st.tabs(['UPLOAD','SELECT'])
 	with t1:
@@ -197,7 +188,7 @@ def ui_hyde_prompt():
 	st.text_area('HyDE prompt', prompts.HYDE, key='hyde_prompt')
 
 def ui_question():
-	st.write('## 2. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
+	st.write('## 3. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
 	disabled = False
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=disabled)
 
@@ -227,7 +218,7 @@ def b_ask():
 	score = ss.get('feedback_score',0)
 	c5.write(f'feedback score: {score}')
 	c4.checkbox('send details', True, key='send_details',
-			help='allow question and the answer to be stored in the EnviroGPT feedback database')
+			help='allow question and the answer to be stored in the ask-my-pdf feedback database')
 	#c1,c2,c3 = st.columns([1,3,1])
 	#c2.radio('zzz',['👍',r'...',r'👎'],horizontal=True,label_visibility="collapsed")
 	#
@@ -290,16 +281,16 @@ def b_save():
 	api_key = ss.get('api_key')
 	disabled = not api_key or not db or not index or not name
 	help = "The file will be stored for about 90 days. Available only when using your own API key."
-	if st.button('save encrypted index in EnviroGPT', disabled=disabled, help=help):
-		with st.spinner('saving to EnviroGPT'):
+	if st.button('save encrypted index in ask-my-pdf', disabled=disabled, help=help):
+		with st.spinner('saving to ask-my-pdf'):
 			db.put(name, index)
 
 def b_delete():
 	db = ss.get('storage')
 	name = ss.get('selected_file')
 	# TODO: confirm delete
-	if st.button('delete from EnviroGPT', disabled=not db or not name):
-		with st.spinner('deleting from EnviroGPT'):
+	if st.button('delete from ask-my-pdf', disabled=not db or not name):
+		with st.spinner('deleting from ask-my-pdf'):
 			db.delete(name)
 		#st.experimental_rerun()
 
@@ -312,25 +303,22 @@ def output_add(q,a):
 
 # LAYOUT
 
-# with st.sidebar:
-# 	ui_info()
-# 	ui_spacer(2)
-# 	with st.expander('advanced'):
-# 		ui_show_debug()
-# 		b_clear()
-# 		ui_model()
-# 		ui_fragments()
-# 		ui_fix_text()
-# 		ui_hyde()
-# 		ui_hyde_summary()
-# 		ui_temperature()
-# 		b_reload()
-# 		ui_task_template()
-# 		ui_task()
-# 		ui_hyde_prompt()
-
-st.title('Why search, when you can get _:green[answers]_?')
-
+with st.sidebar:
+	ui_info()
+	ui_spacer(2)
+	with st.expander('advanced'):
+		ui_show_debug()
+		b_clear()
+		ui_model()
+		ui_fragments()
+		ui_fix_text()
+		ui_hyde()
+		ui_hyde_summary()
+		ui_temperature()
+		b_reload()
+		ui_task_template()
+		ui_task()
+		ui_hyde_prompt()
 
 ui_api_key()
 ui_pdf_file()
