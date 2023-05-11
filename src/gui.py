@@ -14,6 +14,15 @@ header1 = st.empty() # for errors / messages
 header2 = st.empty() # for errors / messages
 header3 = st.empty() # for errors / messages
 
+
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+
 # IMPORTS
 
 import prompts
@@ -320,8 +329,8 @@ def output_add(q,a):
 # 		ui_task()
 # 		ui_hyde_prompt()
 
-st.title('Why search, when you can get _:green[answers]_')
-st.subheader('Upload your reports, regulations, or standards.')
+st.title('Why search, when you can get _:green[answers]_?')
+
 
 # ui_api_key()
 ui_pdf_file()
