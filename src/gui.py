@@ -332,7 +332,7 @@ def output_add(q,a):
 st.title('Why search, when you can get _:green[answers]_?')
 
 
-# ui_api_key()
+ui_api_key()
 ui_pdf_file()
 ui_question()
 ui_hyde_answer()
