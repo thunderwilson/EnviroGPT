@@ -59,6 +59,10 @@ def ui_spacer(n=2, line=False, next_n=0):
 		st.write('')
 
 def ui_info():
+
+	pct = model.community_tokens_available_pct()
+	ss['community_pct'] = pct
+	ss['debug']['community_pct'] = pct
 	st.markdown(f"""
 	# EnviroGPT
 	version {__version__}
@@ -99,9 +103,7 @@ def ui_api_key():
 		st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 
 def index_pdf_file():
-	pct = model.community_tokens_available_pct()
-	ss['community_pct'] = pct
-	ss['debug']['community_pct'] = pct
+
 
 	if ss['pdf_file']:
 		ss['filename'] = ss['pdf_file'].name
@@ -330,7 +332,7 @@ with st.sidebar:
 		ui_task()
 		ui_hyde_prompt()
 
-ui_api_key()
+#ui_api_key()
 ui_pdf_file()
 ui_question()
 ui_hyde_answer()
