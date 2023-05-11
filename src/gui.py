@@ -60,24 +60,25 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def ui_info():
 	st.markdown(f"""
-	# Ask my PDF
+	# EnviroGPT
 	version {__version__}
 	
-	Question answering system built on top of GPT3.
+	Document question answering system built on top of GPT3.
 	""")
-	ui_spacer(1)
-	st.write("Adapted by [Tom Wilson] (https://www.linkedin.com/in/tdgwilson/).", unsafe_allow_html=True)
+	#ui_spacer(1)
+	#st.write("Adapted by [Tom Wilson] (https://www.linkedin.com/in/tdgwilson/).", unsafe_allow_html=True)
 	ui_spacer(1)
 	st.markdown("""
-		Thank you for your interest in my application.
-		This is the first sete
-		Please be aware that this is only a Proof of Concept system
-		and may contain bugs or unfinished features.
-		If you like this app you can ❤️ [follow me](https://www.linkedin.com/in/tdgwilson/)
-		on LinkedIn for news and updates.
+		As consultants, planners, or engineers, we spend a lot of time referencing documents and adapting boilerplate work.
+		I think we can gain 30\%\ of our time back is we can outsource that to AI models or agents. 
+		This small application is the first step in that process.  
+
+		Let EnviroGPT help you review or reference documents. 
+
+		More features coming. Please contact me if you have suggestions, or [follow me](https://www.linkedin.com/in/tdgwilson/) for updates. 
 		""")
-	ui_spacer(1)
-	st.markdown('Source code can be found [here](https://github.com/mobarski/EnviroGPT).')
+	#ui_spacer(1)
+	#st.markdown('Source code can be found [here](https://github.com/mobarski/EnviroGPT).')
 
 def ui_api_key():
 	if ss['community_user']:
