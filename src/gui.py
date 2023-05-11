@@ -5,7 +5,7 @@ app_name = "EnviroGPT"
 # BOILERPLATE
 
 import streamlit as st
-st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}', ppage_icon="📚")
+st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}', page_icon="📚")
 ss = st.session_state
 if 'debug' not in ss: ss['debug'] = {}
 import css
