@@ -70,7 +70,7 @@ def ui_info():
 	ui_spacer(1)
 	st.markdown("""
 		As consultants, planners, or engineers, we spend a lot of time referencing documents and adapting boilerplate work.
-		I think we can gain 30\%\ of our time back is we can outsource that to AI models or agents. 
+		I think we can gain 30\% of our time back for more important work if we can outsource basic tasks to AI models or agents. 
 		This small application is the first step in that process.  
 
 		Let EnviroGPT help you review or reference documents. 
