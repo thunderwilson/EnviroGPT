@@ -289,7 +289,7 @@ def b_save():
 	api_key = ss.get('api_key')
 	#disabled = not api_key or not db or not index or not name
 	help = "The file will be stored for about 90 days. Available only when using your own API key."
-	if st.button('save encrypted index in EnviroGPT', disabled=not, help=help):
+	if st.button('save encrypted index in EnviroGPT', help=help):
 		with st.spinner('saving to EnviroGPT'):
 			db.put(name, index)
 
