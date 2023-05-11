@@ -97,6 +97,10 @@ def ui_api_key():
 		st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 
 def index_pdf_file():
+	pct = model.community_tokens_available_pct()
+	ss['community_pct'] = pct
+	ss['debug']['community_pct'] = pct
+
 	if ss['pdf_file']:
 		ss['filename'] = ss['pdf_file'].name
 		if ss['filename'] != ss.get('fielname_done'): # UGLY
@@ -120,7 +124,7 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	st.write('## 2. Upload or select your PDF file')
+	st.write('## 1. Upload or select your PDF file')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
 	t1,t2 = st.tabs(['UPLOAD','SELECT'])
 	with t1:
@@ -188,7 +192,7 @@ def ui_hyde_prompt():
 	st.text_area('HyDE prompt', prompts.HYDE, key='hyde_prompt')
 
 def ui_question():
-	st.write('## 3. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
+	st.write('## 2. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
 	disabled = False
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=disabled)
 
@@ -303,6 +307,9 @@ def output_add(q,a):
 
 # LAYOUT
 
+st.title('Why search when you can get _:green[answers]_?')
+
+
 with st.sidebar:
 	ui_info()
 	ui_spacer(2)
@@ -320,7 +327,7 @@ with st.sidebar:
 		ui_task()
 		ui_hyde_prompt()
 
-ui_api_key()
+#ui_api_key()
 ui_pdf_file()
 ui_question()
 ui_hyde_answer()
