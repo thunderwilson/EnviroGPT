@@ -26,7 +26,6 @@ import os
 from time import time as now
 
 # HANDLERS
-
 def on_api_key_change():
 	api_key = ss.get('api_key') or os.getenv('OPENAI_KEY')
 	model.use_key(api_key) # TODO: empty api_key
@@ -59,30 +58,24 @@ def ui_spacer(n=2, line=False, next_n=0):
 		st.write('')
 
 def ui_info():
-
-	#pct = model.community_tokens_available_pct()
-	#ss['community_pct'] = pct
-	#ss['debug']['community_pct'] = pct
 	st.markdown(f"""
-	# EnviroGPT
+	# Ask my PDF
 	version {__version__}
 	
-	Document question answering system built on top of GPT3.
+	Question answering system built on top of GPT3.
 	""")
-	#ui_spacer(1)
-	#st.write("Adapted by [Tom Wilson] (https://www.linkedin.com/in/tdgwilson/).", unsafe_allow_html=True)
+	ui_spacer(1)
+	st.write("Made by [Maciej Obarski](https://www.linkedin.com/in/mobarski/).", unsafe_allow_html=True)
 	ui_spacer(1)
 	st.markdown("""
-		As consultants, planners, or engineers, we spend a lot of time referencing documents and adapting boilerplate work.
-		I think we can gain 30\% of our time back for more important work if we can outsource basic tasks to AI models or agents. 
-		This small application is the first step in that process.  
-
-		Let EnviroGPT help you review or reference documents. 
-
-		More features coming. Please contact me if you have suggestions, or [follow me](https://www.linkedin.com/in/tdgwilson/) for updates. 
+		Thank you for your interest in my application.
+		Please be aware that this is only a Proof of Concept system
+		and may contain bugs or unfinished features.
+		If you like this app you can ❤️ [follow me](https://twitter.com/KerbalFPV)
+		on Twitter for news and updates.
 		""")
-	#ui_spacer(1)
-	#st.markdown('Source code can be found [here](https://github.com/mobarski/EnviroGPT).')
+	ui_spacer(1)
+	st.markdown('Source code can be found [here](https://github.com/mobarski/ask-my-pdf).')
 
 def ui_api_key():
 	if ss['community_user']:
@@ -103,8 +96,6 @@ def ui_api_key():
 		st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 
 def index_pdf_file():
-
-
 	if ss['pdf_file']:
 		ss['filename'] = ss['pdf_file'].name
 		if ss['filename'] != ss.get('fielname_done'): # UGLY
@@ -128,7 +119,7 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	st.write('## 1. Upload or select your PDF file')
+	st.write('## 2. Upload or select your PDF file')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
 	t1,t2 = st.tabs(['UPLOAD','SELECT'])
 	with t1:
@@ -196,7 +187,7 @@ def ui_hyde_prompt():
 	st.text_area('HyDE prompt', prompts.HYDE, key='hyde_prompt')
 
 def ui_question():
-	st.write('## 2. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
+	st.write('## 3. Ask questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
 	disabled = False
 	st.text_area('question', key='question', height=100, placeholder='Enter question here', help='', label_visibility="collapsed", disabled=disabled)
 
@@ -226,7 +217,7 @@ def b_ask():
 	score = ss.get('feedback_score',0)
 	c5.write(f'feedback score: {score}')
 	c4.checkbox('send details', True, key='send_details',
-			help='allow question and the answer to be stored in the EnviroGPT feedback database')
+			help='allow question and the answer to be stored in the ask-my-pdf feedback database')
 	#c1,c2,c3 = st.columns([1,3,1])
 	#c2.radio('zzz',['👍',r'...',r'👎'],horizontal=True,label_visibility="collapsed")
 	#
@@ -289,16 +280,16 @@ def b_save():
 	api_key = ss.get('api_key')
 	disabled = not api_key or not db or not index or not name
 	help = "The file will be stored for about 90 days. Available only when using your own API key."
-	if st.button('save encrypted index in EnviroGPT', disabled=disabled, help=help):
-		with st.spinner('saving to EnviroGPT'):
+	if st.button('save encrypted index in ask-my-pdf', disabled=disabled, help=help):
+		with st.spinner('saving to ask-my-pdf'):
 			db.put(name, index)
 
 def b_delete():
 	db = ss.get('storage')
 	name = ss.get('selected_file')
 	# TODO: confirm delete
-	if st.button('delete from EnviroGPT', disabled=not db or not name):
-		with st.spinner('deleting from EnviroGPT'):
+	if st.button('delete from ask-my-pdf', disabled=not db or not name):
+		with st.spinner('deleting from ask-my-pdf'):
 			db.delete(name)
 		#st.experimental_rerun()
 
