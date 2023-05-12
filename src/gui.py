@@ -148,9 +148,9 @@ def ui_pdf_file():
 	# 		else:
 	# 			#ss['index'] = {}
 	# 			pass
-		st.selectbox('select file', filenames, on_change=on_change, key='selected_file', label_visibility="collapsed", disabled=disabled)
-		b_delete()
-		ss['spin_select_file'] = st.empty()
+	# 	st.selectbox('select file', filenames, on_change=on_change, key='selected_file', label_visibility="collapsed", disabled=disabled)
+	# 	b_delete()
+	# 	ss['spin_select_file'] = st.empty()
 
 def ui_show_debug():
 	st.checkbox('show debug section', key='show_debug')
