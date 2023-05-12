@@ -309,7 +309,7 @@ def output_add(q,a):
 
 # LAYOUT
 
-st.title('Why search when you can get _:green[answers]_?')
+st.title('Why search, when you can get _:green[answers]_?')
 st.subheader('Chat with reports, investigations, consents, regulations, plan rules...')
 
 
