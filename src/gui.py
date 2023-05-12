@@ -129,7 +129,7 @@ def ui_pdf_file():
 	#t1,t2 = st.tabs(['UPLOAD','SELECT'])
 	#with t1:
 	st.file_uploader('pdf file', type='pdf', key='pdf_file', disabled=disabled, on_change=index_pdf_file, label_visibility="collapsed")
-	b_save()
+	#b_save()
 	# with t2:
 	# 	filenames = ['']
 	# 	if ss.get('storage'):
