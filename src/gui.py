@@ -79,7 +79,7 @@ def ui_info():
 	st.markdown("""
 		Let EnviroGPT help you review, or reference documents.
 
-		More features coming soon. [Contact me](https://www.linkedin.com/in/tdgwilson/) with any feedback or feature requests you might have.
+		More features coming soon.[Contact me](https://www.linkedin.com/in/tdgwilson/) with any feedback or feature requests you might have.
 		""")
 	ui_spacer(1)
 	st.markdown('Source code can be found [here](https://github.com/thunderwilson/EnviroGPT).')
