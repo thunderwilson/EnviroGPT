@@ -287,9 +287,9 @@ def b_save():
 	index = ss.get('index')
 	name = ss.get('filename')
 	api_key = ss.get('api_key')
-	#disabled = not api_key or not db or not index or not name
+	disabled = not api_key or not db or not index or not name
 	help = "The file will be stored for about 90 days. Available only when using your own API key."
-	if st.button('save encrypted index in EnviroGPT', help=help):
+	if st.button('save encrypted index in EnviroGPT', disabled=disabled, help=help):
 		with st.spinner('saving to EnviroGPT'):
 			db.put(name, index)
 
@@ -332,7 +332,7 @@ with st.sidebar:
 		ui_task()
 		ui_hyde_prompt()
 
-#ui_api_key()
+ui_api_key()
 ui_pdf_file()
 ui_question()
 ui_hyde_answer()
