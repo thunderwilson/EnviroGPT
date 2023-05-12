@@ -74,7 +74,9 @@ def ui_info():
 		As consultants, planners, or engineers, we spend a lot of time referencing documents and adapting boilerplate work.
         I think we can gain 30\% of our time back for more important work if we can outsource basic tasks to AI models or agents. 
         This small application is the first step in that process.
-
+		""")
+	ui_spacer(1)
+	st.markdown("""
 		Let EnviroGPT help you review, or reference documents.
 
 		More features coming soon. [Contact me](https://www.linkedin.com/in/tdgwilson/) with any feedback or feature requests you might have.
