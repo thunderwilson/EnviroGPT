@@ -60,9 +60,9 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def ui_info():
 
-	pct = model.community_tokens_available_pct()
-	ss['community_pct'] = pct
-	ss['debug']['community_pct'] = pct
+	#pct = model.community_tokens_available_pct()
+	#ss['community_pct'] = pct
+	#ss['debug']['community_pct'] = pct
 	st.markdown(f"""
 	# EnviroGPT
 	version {__version__}
