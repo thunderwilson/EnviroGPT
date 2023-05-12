@@ -62,34 +62,37 @@ def ui_info():
 	ss['community_pct'] = pct
 	ss['debug']['community_pct'] = pct
 	st.markdown(f"""
-	# Ask my PDF
+	# EnviroGPT
 	version {__version__}
 	
 	Question answering system built on top of GPT3.
 	""")
 	ui_spacer(1)
-	st.write("Made by [Maciej Obarski](https://www.linkedin.com/in/mobarski/).", unsafe_allow_html=True)
+	st.write("Made by [Tom Wilson](https://www.linkedin.com/in/tdgwilson/).", unsafe_allow_html=True)
 	ui_spacer(1)
 	st.markdown("""
-		Thank you for your interest in my application.
-		Please be aware that this is only a Proof of Concept system
-		and may contain bugs or unfinished features.
-		If you like this app you can ❤️ [follow me](https://twitter.com/KerbalFPV)
-		on Twitter for news and updates.
+		As consultants, planners, or engineers, we spend a lot of time referencing documents and adapting boilerplate work.
+        I think we can gain 30\% of our time back for more important work if we can outsource basic tasks to AI models or agents. 
+        This small application is the first step in that process.  
+
+        Let EnviroGPT help you review or reference documents. 
+
+        More features coming soon. [Contact me](https://www.linkedin.com/in/tdgwilson/) for feedback or requests.
+
 		""")
 	ui_spacer(1)
-	st.markdown('Source code can be found [here](https://github.com/mobarski/ask-my-pdf).')
+	st.markdown('Source code can be found [here](https://github.com/thunderwilson/EnviroGPT).')
 
 def ui_api_key():
 	if ss['community_user']:
-		st.write('## 1. Optional - enter your OpenAI API key')
+		#st.write('## 1. Optional - enter your OpenAI API key')
 		#t1,t2 = st.tabs(['community version','enter your own API key'])
 		#with t1:
 		pct = model.community_tokens_available_pct()
 		st.write(f'Community tokens available: :{"green" if pct else "red"}[{int(pct)}%]')
 		st.progress(pct/100)
 		st.write('Refresh in: ' + model.community_tokens_refresh_in())
-		st.write('You can sign up to OpenAI and/or create your API key [here](https://platform.openai.com/account/api-keys)')
+		#st.write('You can sign up to OpenAI and/or create your API key [here](https://platform.openai.com/account/api-keys)')
 		ss['community_pct'] = pct
 		ss['debug']['community_pct'] = pct
 		#with t2:
@@ -220,7 +223,7 @@ def b_ask():
 	score = ss.get('feedback_score',0)
 	c5.write(f'feedback score: {score}')
 	c4.checkbox('send details', True, key='send_details',
-			help='allow question and the answer to be stored in the ask-my-pdf feedback database')
+			help='allow question and the answer to be stored in the EnviroGPT feedback database')
 	#c1,c2,c3 = st.columns([1,3,1])
 	#c2.radio('zzz',['👍',r'...',r'👎'],horizontal=True,label_visibility="collapsed")
 	#
@@ -283,16 +286,16 @@ def b_save():
 	api_key = ss.get('api_key')
 	disabled = not api_key or not db or not index or not name
 	help = "The file will be stored for about 90 days. Available only when using your own API key."
-	if st.button('save encrypted index in ask-my-pdf', disabled=disabled, help=help):
-		with st.spinner('saving to ask-my-pdf'):
+	if st.button('save encrypted index in EnviroGPT', disabled=disabled, help=help):
+		with st.spinner('saving to EnviroGPT'):
 			db.put(name, index)
 
 def b_delete():
 	db = ss.get('storage')
 	name = ss.get('selected_file')
 	# TODO: confirm delete
-	if st.button('delete from ask-my-pdf', disabled=not db or not name):
-		with st.spinner('deleting from ask-my-pdf'):
+	if st.button('delete from EnviroGPT', disabled=not db or not name):
+		with st.spinner('deleting from EnviroGPT'):
 			db.delete(name)
 		#st.experimental_rerun()
 
