@@ -1,8 +1,7 @@
 # EnviroGPT
 
 
-
-Thank you for your interest in my application. Please be aware that this is only a **Proof of Concept system** and may contain bugs or unfinished features. 
+Thanks for your interest. This is a **Proof of Concept system** and may contain bugs or unfinished features. 
 
 
 
@@ -30,15 +29,15 @@ Thank you for your interest in my application. Please be aware that this is only
 
 1. Clone the repo:
 
-   `git clone https://github.com/mobarski/ask-my-pdf`
+   `git clone https://github.com/thunderwilson/EnviroGPT`
 
 2. Install dependencies:
 
-   `pip install -r ask-my-pdf/requirements.txt`
+   `pip install -r EnviroGPT/requirements.txt`
 
 3. Run the app:
 
-   `cd ask-my-pdf/src`
+   `cd EnviroGPT/src`
    
    `run.sh` or `run.bat`
 
