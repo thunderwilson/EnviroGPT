@@ -82,7 +82,7 @@ def ui_info():
 		More features coming soon.[Contact me](https://www.linkedin.com/in/tdgwilson/) with any feedback or feature requests you might have.
 		""")
 	ui_spacer(1)
-	#st.markdown('Source code can be found [here](https://github.com/thunderwilson/EnviroGPT).')
+	st.markdown('Source code can be found [here](https://github.com/thunderwilson/EnviroGPT).')
 
 def ui_api_key():
 	if ss['community_user']:
