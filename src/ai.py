@@ -63,6 +63,6 @@ def get_community_usage_cost():
 	used += 0.04   * data.get('total_tokens:gpt-4',0) / 1000 # prompt_price=0.03 but output_price=0.06
 	used += 0.02   * data.get('total_tokens:text-davinci-003',0) / 1000
 	used += 0.002  * data.get('total_tokens:text-curie-001',0) / 1000
-	used += 0.002  * data.get('total_tokens:gpt-3.5-turbo',0) / 1000
+	used += 0.002  * data.get('total_tokens:gpt-4-1106-preview',0) / 1000
 	used += 0.0004 * data.get('total_tokens:text-embedding-ada-002',0) / 1000
 	return used
